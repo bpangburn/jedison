@@ -138,13 +138,13 @@ public class SegTest {
 			// TELL USER HOW TO USE TEST CLASS (IF NECESSARY)
 				if (warnUser) {
 				// DISPLAY MESSAGE
-					System.out.println("Usage: java SegTest <source image> <version: 0=04-25-2002, 1=04-14-2003>"
+					System.out.println("Usage: java -jar jedison-x.y.z.jar <source image ('sample' for demo)> <version: 0=04-25-2002, 1=04-14-2003>"
 					    + " <display: true/false> <color radius> <spatial radius>"
 						+ " <min region> <speedup: 0=none, 1=medium, 2=high> <for speedup of 2, speed factor: 0.0=better quality, 1.0=better speed>");
 					System.out.println("");
-					System.out.println("e.g.  java SegTest my_image.png 0 true 6.5 7 20 0");
-					System.out.println(" -or- java SegTest my_image.png 1 false 6.5 7 20 1");
-					System.out.println(" -or- java SegTest my_image.png 1 true 6.5 7 20 2 0.5");
+					System.out.println("e.g.   java -jar jedison-x.y.z.jar sample 0 true 6.5 7 20 0");
+					System.out.println(" -or-  java -jar jedison-x.y.z.jar user_img1.png 1 false 6.5 7 20 1");
+					System.out.println(" -or-  java -jar jedison-x.y.z.jar user_img1.png 1 true 6.5 7 20 2 0.5");
 					System.out.println("");
 					System.out.println("For more information on mean shift image segmentaton, consult:");
 					System.out.println(" [1] D. Comanicu, P. Meer: 'Mean shift: A robust approach toward feature");
@@ -166,7 +166,14 @@ public class SegTest {
 
 
 			// LOAD SOURCE IMAGE USING LOADER CLASS
-				BufferedImage tmpImage = ImageIO.read(new File(inputFile));
+				BufferedImage tmpImage;
+				if (inputFile.equals("sample")) {
+				// USE SAMPLE PNG, my_image.png  IN ./src/main/resources/ OF JAR
+					tmpImage = ImageIO.read(SegTest.class.getClassLoader().getResourceAsStream("my_image.png"));
+				} else {
+				// USE USER SPECIFIED FILE
+					tmpImage = ImageIO.read(new File(inputFile));
+				}
 
 			// DETERMINE WIDTH AND HEIGHT
 				int width = tmpImage.getWidth();
