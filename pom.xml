@@ -17,14 +17,22 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<version.maven>3.6.3</version.maven>
-		<version.java>1.8</version.java>
-
-		<version.maven-compiler-plugin>3.8.1</version.maven-compiler-plugin>
-		<version.maven-jar-plugin>3.2.0</version.maven-jar-plugin>
+		<version.java>8</version.java>
+		
+		<version.maven-enforcer-plugin>3.4.1</version.maven-enforcer-plugin>
+		<version.maven-clean-plugin>3.3.2</version.maven-clean-plugin>
+		<version.maven-deploy-plugin>3.1.1</version.maven-deploy-plugin>
+		<version.maven-install-plugin>3.1.1</version.maven-install-plugin>
+		<version.maven-resources-plugin>3.3.1</version.maven-resources-plugin>
+		<version.maven-site-plugin>4.0.0-M12</version.maven-site-plugin>
+		<version.maven-surefire-plugin>3.2.2</version.maven-surefire-plugin>
+		<version.maven-compiler-plugin>3.11.0</version.maven-compiler-plugin>
+		<version.dependency-check-maven>9.0.4</version.dependency-check-maven>
+		<version.maven-jar-plugin>3.3.0</version.maven-jar-plugin>
 		<version.maven-source-plugin>3.2.1</version.maven-source-plugin>
-		<version.maven-javadoc-plugin>3.2.0</version.maven-javadoc-plugin>
-		<version.maven-gpg-plugin>1.6</version.maven-gpg-plugin>
-		<version.nexus-staging-maven-plugin>1.6.8</version.nexus-staging-maven-plugin>
+		<version.maven-javadoc-plugin>3.6.3</version.maven-javadoc-plugin>
+		<version.maven-gpg-plugin>3.1.0</version.maven-gpg-plugin>
+		<version.nexus-staging-maven-plugin>1.6.13</version.nexus-staging-maven-plugin>
 	</properties>
 
 	<licenses>
@@ -60,14 +68,75 @@
 
 	<build>
 		<plugins>
+			<!-- Maven Enforcer forces specified version of Java and Maven -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>${version.maven-enforcer-plugin}</version>
+				<executions>
+					<execution>
+						<id>enforce-versions</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<requirePluginVersions>
+									<message>Best Practice is to always define plugin versions!</message>
+									<banLatest>true</banLatest>
+									<banRelease>true</banRelease>
+									<banSnapshots>true</banSnapshots>
+								</requirePluginVersions>
+
+								<requireMavenVersion>
+									<version>${version.maven}</version>
+								</requireMavenVersion>
+
+								<requireJavaVersion>
+									<version>${version.java}</version>
+								</requireJavaVersion>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>${version.maven-clean-plugin}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>${version.maven-deploy-plugin}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>${version.maven-install-plugin}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${version.maven-resources-plugin}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>${version.maven-site-plugin}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${version.maven-surefire-plugin}</version>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>${version.maven-compiler-plugin}</version>
 
 				<configuration>
-					<source>${version.java}</source>
-					<target>${version.java}</target>
+					<release>${version.java}</release>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -87,7 +156,28 @@
 	</build>
 
 	<profiles>
-
+		<profile>
+			<!-- invoked during verify phase -->
+			<!-- https://jeremylong.github.io/DependencyCheck/dependency-check-maven/ -->
+			<id>owasp-check</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.owasp</groupId>
+						<artifactId>dependency-check-maven</artifactId>
+						<version>${version.dependency-check-maven}</version>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<goals>
+									<goal>check</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 		<profile>
 			<id>release</id>
 			<build>
@@ -112,8 +202,7 @@
 						<artifactId>maven-javadoc-plugin</artifactId>
 						<version>${version.maven-javadoc-plugin}</version>
 						<configuration>
-							<source>${version.java}</source>
-							<target>${version.java}</target>
+							<release>${version.java}</release>
 							<additionalJOption>-Xdoclint:none</additionalJOption>
 							<failOnError>false</failOnError>
 						</configuration>

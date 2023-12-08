@@ -724,9 +724,9 @@ public class MSImageProcessor extends MeanShift {
 	 *
 	 * @param sigmaS		the range radius that defines similar color
 	 * 						amongst image regions
-	 * @param minRegion		the minimum density a region may have in the resulting
+	 * @param minRegion		{@literal minimum density a region may have in the resulting
 	 * 						segmented image. All regions have point density
-	 * 						< minRegion are pruned from the image
+	 * 						< minRegion are pruned from the image }
 	 */
 	public void FuseRegions(float sigmaS, int minRegion) {
 
@@ -902,9 +902,9 @@ public class MSImageProcessor extends MeanShift {
 	 *
 	 * @param sigmaS		the spatial radius of the mean shift window
 	 * @param sigmaR		the range radius of the mean shift window
-	 * @param minRegion		the minimum density a region may have in the resulting
+	 * @param minRegion		{@literal the minimum density a region may have in the resulting
 	 * 						segmented image. All regions have point density < minRegion
-	 * 						are pruned from the image
+	 * 						are pruned from the image }
 	 * @param speedUpLevel	determines if a speed up optimization should be used to
 	 * 						perform image filtering. A value of NO_SPEEDUP turns this
 	 *						optimization off and a value of SPEEDUP turns this optimization on

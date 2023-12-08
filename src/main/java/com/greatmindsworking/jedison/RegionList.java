@@ -189,7 +189,7 @@ public class RegionList {
 	 *     region being classified.
 	 *   - indeces is a set of indeces specifying the data points contained within
 	 *     this region
-	 *   - pointCount must be > 0
+	 *   - {@literal pointCount must be > 0 }
 	 * Post:
 	 *   - a new region labeled using label and containing pointCount number of
 	 *     points has been added to the region list.

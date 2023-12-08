@@ -513,22 +513,22 @@ public class MeanShift {
 
 
 	/**
-	 * <pre>
-	 * Each subspace specified as User Defined is unquely defined by a correlating
+	 *<pre>
+	 * Each subspace specified as User Defined is uniquely defined by a correlating
 	 * weight function which is user defined.
 	 *
-	 * A weight function w(u) exhibits the following
-	 * Properties:
-	 *
+	 * A weight function w(u) exhibits the following properties:
+	 *{@literal
 	 * (1) w(u) = w(-u)
 	 * (2) u = ((x_i-y_k)^2)/(h^2) (see docs)
 	 * (3) w(u) = 0, for |u| >= halfWindow
+	 *}
 	 *
 	 * Weight functions are accounted for every time a new kernel is created.
 	 *
 	 * If a weight function is added to non-existing subspace of the input data set
-	 * (example: the input data set containes 3 subspaces and this method is given
-	 * subspace = 4) then the weight defintion will simply be ignored by the mean
+	 * (example: the input data set contains 3 subspaces and this method is given
+	 * subspace = 4) then the weight definition will simply be ignored by the mean
 	 * shift class.
 	 *
 	 * If a subspace is declared as kernel type User Defined and a weight function
@@ -536,32 +536,34 @@ public class MeanShift {
 	 *
 	 * Usage: AddWeightFunction(g(u), halfWindow, sampleNumber, subspace);
 	 *
-	 *
 	 * Pre:
 	 *   - g(u) is the normalized weight function with respect to u = (norm(x-xi))^2/h^2
 	 *
 	 *   - sampleNumber is the number of samples to be taken of g(u) over halfWindow
 	 *     interval
 	 *
-	 *   - halfWindow is the radius of g(u) such that g(u) is defined for 0 <= u <= halfWindow
+	 *   - {@literal halfWindow is the radius of g(u) such that g(u) is defined for 0 <= u <= halfWindow }
 	 *
 	 *   - subspace is the subspace number for which g(u) is to be applied during the
 	 *     mean shift procedure.
+	 *     
 	 * Post:
 	 *   - g(u) has been added to the Mean Shift class private data structure to be
 	 *     used by the mean shift procedure.
 	 *
 	 *   - if a weight function has already been specified for the specified subspace,
 	 *     the weight function for this subspace has been replaced.
+	 *</pre>
 	 *
 	 * @param gf			an array of the weight function w(u) exhibiting the above properties
 	 * @param halfWindow	a floating point number specifying where w(u) exists (is non zero)
 	 * 						[See Property 3 Above]
-	 * @param sampleNumber	an integer used to specify the number of samples used to describe
-	 * 						w(u). Linear interpolation isused during the mean shift calculation
+	 * @param sampleNumber	{@literal an integer used to specify the number of samples used to describe
+	 * 						w(u). Linear interpolation is used during the mean shift calculation
 	 *						using the samples of w(u) to determine the value of w at a location
-	 *						|u| < halfWindow
+	 *						|u| < halfWindow }
 	 * @param subspace		an integer specifying which kernel w(u) defines
+	 * 
 	 */
 	// MeanShift::AddWeightFunction(double g(double), float halfWindow, int sampleNumber, int subspace)
 	public void AddWeightFunction(GFunction gf, float halfWindow, int sampleNumber, int subspace) {
