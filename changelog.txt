@@ -2,10 +2,8 @@
 ChangeLog file for the jEDISON image segmentation system.
 ==============================================================================
 
-$Id$
-
 ==============================================================================
-Version 1.1.0 - Released TBD
+Version 1.1.0 - Released 2023-12-15
 ==============================================================================
 
 1. 2018-02-09: Migrated jEDISON SourceForge Repository from CVS to git.
@@ -21,4 +19,6 @@ Version 1.1.0 - Released TBD
 11.2023-12-08: Added maven-install-plugin version 3.1.1
 12.2023-12-08: Added maven-resources-plugin version 3.3.1
 13.2023-12-08: Added maven-site-plugin version 4.0.0-M12
-14.2023-12-08: Added maven-surefire-plugin version 3.2.2
+14.2023-12-15: Updated maven-surefire-plugin version 3.2.3
+15.2023-12-15: Updated maven-source-plugin to 3.3.0
+16.2023-12-15: Updated dependency-check-maven to 9.0.6
