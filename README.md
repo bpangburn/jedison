@@ -1,5 +1,8 @@
-# jedison
-This software is a partial port of the EDISON system developed by
+# ReadMe file for the Java port of the EDISON image segmentation software
+
+## BACKGROUND
+
+This software is a partial Java port of the EDISON system developed by
 Chris M. Christoudias and Bogdan Georgescu at the Robust Image
 Understanding Laboratory at Rutgers University
 (http://www.caip.rutgers.edu/riul/).
@@ -22,12 +25,7 @@ It is based on the following references:
 The above cited papers are available from:
 http://www.caip.rutgers.edu/riul/research/robust.html
 
-==============================================================================
-
-This program is a Java port of the mean shift image segmentation portion
-of the EDISON system developed by the Robust Image Understanding Laboratory
-at Rutgers University.  It is more of a hack than an attempt at software
-engineering.
+## EDISON PORT
 
 The port involved the following general steps:
   1. consolidate header files (.h) and class files (.cpp) into Java
@@ -52,51 +50,41 @@ http://www.greatmindsworking.com
 This release of jEDISON allow for segmentation based on either the 04-25-2002
 or the 04-14-2003 release of the C++ EDISON code.
 
-==============================================================================
+## COMPILATION
 
-This code has been tested using the Java SE 7
+jEDISON has been tested with Java 1.8 or later.
 
-This release of jEDISON is being distributed as a single JAR file
-(jEDISON_1.0.jar) containing the source, binaries, and JavaDoc
-documentation.
+Git/Maven:
+  `git clone https://github.com/bpangburn/jedison.git`
 
-There is a changelog.txt file, which contains changes for both jEDISON & EBLA.
+  After cloning, you can use an IDE, e.g. Eclipse or NetBeans, to compile/run.
+  Or you can use mvn directly and then run as shown here. Note that compiled
+  jar files will be in the ./target subdirectory.
+  
+  jEDISON Library:
+    `cd ./jedison/`
+    `mvn clean package -Prelease`
 
-To extract jEDISON, place the JAR file where you would like it installed (e.g.
-"c:\temp\" or "/home/<username>/") and issue the command:
+## DEPENDENCY INTEGRATION
 
-jar -xf jEDISON_1.0.jar
+  Add jEDISON to the Maven dependencies in your POM file:  
 
-Note that except for the demo, SegTest.java, jEDISON is part of the package:
-com.greatmindsworking.EDISON.segm so most of the files for jEDISON will
-be located in that subdirectory.
+    <dependency>
+        <groupId>com.nqadmin.jedison</groupId>
+        <artifactId>jedison</artifactId>
+        <version>x.y.z</version>
+    </dependency>
 
-To run the SegTest demo for jEDISON:
-  1. change to the directory containing this file, SegText.java,
-     and my_image.png (e.g. "cd ./jedison")
-  2. compile SegTest.java using:
-     "javac -classpath ./bin SegTest.java" (Linux)
-     "javac -classpath .\bin SegTest.java" (Windows)
-  3. get command line options using "java SegTest"
-  4. run SegTest against my_image.png using appropriate command line options:
-     "java -classpath ./bin:. SegTest my_image.png 0 true 6.5 7 20 0" (Linux)
-     "java -classpath .\bin;. SegTest my_image.png 0 true 6.5 7 20 0" (Windows)
-     
-To recompile jEDISON:
-  1. change to the directory containing this file, SegText.java,
-     and my_image.png (e.g. "cd ./jedison")
-  2. compile using:
-     "javac -d ./bin -classpath . ./src/com/greatmindsworking/EDISON/segm/*.java" (Linux)
-     "javac -d .\bin -classpath . .\src\com\greatmindsworking\EDISON\segm\*.java" (Windows)
+## SAMPLE/DEMO PROGRAMS
 
-To rebuild jEDISON JavaDocs:
-  1. change to the directory containing this file, SegText.java,
-     and my_image.png (e.g. "cd ./jedison")
-  2. generate JavaDocs using:
-     "javadoc -d ./docs -classpath . ./src/com/greatmindsworking/EDISON/segm/*.java" (Linux)
-     "javadoc -d .\docs -classpath . .\src\com\greatmindsworking\EDISON\segm\*.java" (Windows)
+  1. Navigate to the folder containing the jEDISON jar
+  2. Type: `java -jar jedison-x.y.z.jar {comma-separated paramters}`
+  
+  Usage: java -jar jedison-x.y.z.jar <source image ('sample' for demo)> <version: 0=04-25-2002, 1=04-14-2003> <display: true/false> <color radius> <spatial radius> <min region> <speedup: 0=none, 1=medium, 2=high> <for speedup of 2, speed factor: 0.0=better quality, 1.0=better speed>
+  
+  To quickly run jEDISON on a sample image packaged in the jar, type: `java -jar jedison-x.y.z.jar sample 0 true 6.5 7 20 0`
 
-==============================================================================
+## ADDITIONAL INFORMATION
 
 For more information, on EDISON, see the following web sites:
   http://www.caip.rutgers.edu/riul/research/code/EDISON/index.html
