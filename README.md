@@ -2,9 +2,9 @@
 
 ## BACKGROUND
 
-This software is a partial Java port of the EDISON system developed by
-Chris M. Christoudias and Bogdan Georgescu at the Robust Image
-Understanding Laboratory at Rutgers University
+This software is a partial Java port of the EDISON image segmentation
+system developed by Chris M. Christoudias and Bogdan Georgescu at the
+Robust Image Understanding Laboratory at Rutgers University
 (http://www.caip.rutgers.edu/riul/).
 
 EDISON is available from:
