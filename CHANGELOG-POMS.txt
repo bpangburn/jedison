@@ -15,8 +15,7 @@ jEDISON 1.1.1 - TBD
 2. java .............................1.8 -> 8 (using <release> rather than <source> and <target>
 
 (jEDISON dependencies)
-1. some-dependency ..................1.2.3 -> 1.3.5
-
+1. some-dependency ..................x.y.z -> a.b.c
 
 (jEDISON plugins)
-1. some-plugin ......................1.2.3 -> 1.3.5
+1. dependency-check-maven ......................9.0.6 -> 9.0.7
