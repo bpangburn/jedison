@@ -3,9 +3,9 @@
 ## Build and runtime
 - [ ] Add a subprocess-based CLI integration test for both display modes, and
       high-speed mode with an eighth speed-factor parameter.
-- [ ] Validate Java 8, 11, 21, and 25 CI jobs and CodeQL checks.
-- [x] Establish Java 8, 11, 21 and 25 Maven CI matrix (existing).
-- [ ] Validate new JUnit and CodeQL workflows on the PR and after merge.
+- [x] Validate the Java 8, 11, 21 and 25 Maven CI matrix and the new JUnit tests.
+- [ ] Confirm CodeQL results are visible under GitHub's default CodeQL setup.
+      Do not enable an advanced workflow while default setup is active.
 - [ ] Add tests for deterministic segmentation output on a bundled test image,
       especially MeanShift and the speed-up mode selection.
 - [ ] Verify headless and GUI invocation behavior of `SegTest` separately.
@@ -23,9 +23,8 @@
 - [ ] Confirm license/source attribution continues to match the historical
       partial EDISON Java port.
 
-- [ ] Fix `SegTest` argument parsing: `Boolean.getBoolean()` reads a system property rather
-      than the supplied text; high-speed mode checks `args.length==6` rather than
-      accepting the eighth speed-factor argument. Add CLI regression tests.
+- [x] Fix `SegTest` command-line display flag and eighth high-speed parameter (PR #9).
+- [ ] Add subprocess-based CLI regression tests for these arguments.
 
 ## EBLA downstream integration
 - [ ] After a verified jEDISON build, test the published

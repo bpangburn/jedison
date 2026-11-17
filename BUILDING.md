@@ -47,6 +47,9 @@ mvn -B -ntp -Powasp-check verify
 
 The vulnerability database may require network access/rate-limit handling;
 avoid placing NVD API keys or Maven publishing credentials in source control.
-CodeQL uses a separate GitHub Actions workflow.
+CodeQL is managed by GitHub Code Security's **default setup**, not by a
+checked-in custom CodeQL workflow. GitHub rejects uploads from advanced
+configuration while default setup remains enabled. Review CodeQL findings
+under **Security → Code scanning** in the repository.
 
 See [Security Policy](.github/SECURITY.md) for private vulnerability reporting.
