@@ -1,6 +1,8 @@
 # Maintenance TODO — jEDISON
 
 ## Build and runtime
+- [ ] Add a subprocess-based CLI integration test for both display modes, and
+      high-speed mode with an eighth speed-factor parameter.
 - [ ] Validate Java 8, 11, 21, and 25 CI jobs and CodeQL checks.
 - [ ] Add tests for deterministic segmentation output on a bundled test image,
       especially MeanShift and the speed-up mode selection.
