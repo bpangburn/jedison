@@ -13,3 +13,5 @@ Projects** (m2e), open as a Maven project in NetBeans, or use IntelliJ IDEA.
   an EditorConfig extension in an IDE without native support.
 - `SegTest` is a GUI-capable sample, not an automated regression suite.
   Review and test the sample image/segmentation paths before releasing.
+- JUnit Jupiter tests are under `src/test/java`; run `mvn -B -ntp clean verify`
+  (see [BUILDING.md](BUILDING.md)) before requesting a merge.

@@ -29,3 +29,14 @@ bin/
 .project
 .settings/org.eclipse.core.resources.prefs
 .settings/org.eclipse.m2e.core.prefs
+
+# Other IDEs and common local output
+.idea/
+*.iml
+.vscode/
+out/
+*.hprof
+.DS_Store
+
+# Command-line segmentation demo output
+/segment.png
