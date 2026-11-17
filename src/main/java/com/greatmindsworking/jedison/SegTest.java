@@ -106,8 +106,8 @@ public class SegTest {
 					// EXTRACT VERSION
 						edisonPortVersion = Integer.parseInt(args[1]);
 
-					// EXTRACT DISPLAY FLAG - NOTE parseBoolean NOT ADDED UNTIL J2SE 1.5
-						displayText = Boolean.getBoolean(args[2]);
+					// EXTRACT DISPLAY FLAG FROM THE ARGUMENT, NOT A SYSTEM PROPERTY
+						displayText = Boolean.parseBoolean(args[2]);
 
 					// EXTRACT COLOR RADIUS
 						colorRadius = Float.parseFloat(args[3]);
@@ -121,7 +121,7 @@ public class SegTest {
 					// EXTRACT SPEEDUP LEVEL
 						speedUp = Integer.parseInt(args[6]);
 						if (speedUp == 2) {
-							if (args.length==6) {
+							if (args.length >= 8) {
 								highSpeedUpFactor = Float.parseFloat(args[7]);
 							} else {
 								warnUser=true;
