@@ -13,13 +13,13 @@
       upgrades; preserve the Java 8 release target unless intentionally changed.
 
 ## Release/publishing migration
-- [ ] Replace the POM's legacy `oss.sonatype.org` distribution management and
-      `nexus-staging-maven-plugin` release configuration with a supported
-      **Sonatype Central Portal** process. OSSRH shut down in June 2025.
-- [ ] Confirm namespace ownership, token-based credentials, signing, sources,
-      Javadocs, validation, and manual/automatic publish decision.
-- [ ] Validate publication against an appropriate staging/validation process
-      before attempting a real release. Do not place credentials in GitHub.
+- [x] Replace retired OSSRH/Nexus publishing with the official Central
+      Publisher Portal Maven plugin (manual publishing; upload disabled by default).
+- [ ] Confirm Central Portal namespace access, create a user token, configure
+      local GPG signing, and validate signed source/Javadoc artifacts.
+- [x] Set publishing to require manual Portal approval; do not auto-publish.
+- [ ] Choose the next immutable release version and generate a local test bundle;
+      validate a real Portal upload before manually publishing. No credentials in GitHub.
 - [ ] Confirm license/source attribution continues to match the historical
       partial EDISON Java port.
 

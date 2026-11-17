@@ -33,7 +33,7 @@
 		<version.maven-source-plugin>3.4.0</version.maven-source-plugin>
 		<version.maven-javadoc-plugin>3.12.0</version.maven-javadoc-plugin>
 		<version.maven-gpg-plugin>3.2.8</version.maven-gpg-plugin>
-		<version.nexus-staging-maven-plugin>1.7.0</version.nexus-staging-maven-plugin>
+		<version.central-publishing-maven-plugin>0.12.0</version.central-publishing-maven-plugin>
 	</properties>
 
 	<licenses>
@@ -55,17 +55,6 @@
 		<url>scm:git:git@github.com:bpangburn/jedison.git</url>
 		<developerConnection>scm:git:git@github.com:bpangburn/jedison.git</developerConnection>
 	</scm>
-
-	<distributionManagement>
-		<snapshotRepository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
-		<repository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-		</repository>
-	</distributionManagement>
 
 	<dependencies>
 		<dependency>
@@ -193,6 +182,10 @@
 		</profile>
 		<profile>
 			<id>release</id>
+			<properties>
+				<!-- -Prelease deploy creates a local bundle unless explicitly overridden. -->
+				<central.skipUpload>true</central.skipUpload>
+			</properties>
 			<build>
 				<plugins>
 					<plugin>
@@ -241,32 +234,26 @@
 								<goals>
 									<goal>sign</goal>
 								</goals>
-								<configuration>
-									<keyname>${gmw.gpg.keyname}</keyname>
-									<passphraseServerId>${gmw.gpg.keyname}</passphraseServerId>
-								</configuration>
+		
 							</execution>
 						</executions>
 					</plugin>
 
+					<!--
+						Publisher Portal replaces retired OSSRH. The release profile
+						defaults to local-bundle-only mode; an explicit property is
+						required to upload. See PUBLISHING.md.
+					-->
 					<plugin>
-						<groupId>org.sonatype.plugins</groupId>
-						<artifactId>nexus-staging-maven-plugin</artifactId>
-						<version>${version.nexus-staging-maven-plugin}</version>
-						<executions>
-							<execution>
-								<id>default-deploy</id>
-								<phase>deploy</phase>
-								<goals>
-									<goal>deploy</goal>
-								</goals>
-							</execution>
-						</executions>
+						<groupId>org.sonatype.central</groupId>
+						<artifactId>central-publishing-maven-plugin</artifactId>
+						<version>${version.central-publishing-maven-plugin}</version>
 						<extensions>true</extensions>
 						<configuration>
-							<serverId>ossrh</serverId>
-							<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-							<autoReleaseAfterClose>false</autoReleaseAfterClose>
+							<publishingServerId>central</publishingServerId>
+							<autoPublish>false</autoPublish>
+							<skipUpload>${central.skipUpload}</skipUpload>
+							<waitUntil>validated</waitUntil>
 						</configuration>
 					</plugin>
 				</plugins>
