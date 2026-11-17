@@ -52,6 +52,10 @@ or the 04-14-2003 release of the C++ EDISON code.
 
 ## COMPILATION
 
+For current Maven/IDE setup, see [IDE_SETUP.md](IDE_SETUP.md). For the
+legacy publishing configuration and follow-up testing, see [TODO.md](TODO.md).
+
+
 jEDISON has been tested with Java 1.8 or later.
 
 Git/Maven:
@@ -63,14 +67,14 @@ Git/Maven:
   
   jEDISON Library:
     `cd ./jedison/`
-    `mvn clean package -Prelease`
+    `mvn -B -ntp clean verify`
 
 ## DEPENDENCY INTEGRATION
 
   Add jEDISON to the Maven dependencies in your POM file:  
 
     <dependency>
-        <groupId>com.nqadmin.jedison</groupId>
+        <groupId>com.greatmindsworking.jedison</groupId>
         <artifactId>jedison</artifactId>
         <version>x.y.z</version>
     </dependency>
