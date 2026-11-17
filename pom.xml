@@ -26,7 +26,7 @@
 		<version.maven-resources-plugin>3.3.1</version.maven-resources-plugin>
 		<version.maven-site-plugin>4.0.0-M12</version.maven-site-plugin>
 		<version.maven-surefire-plugin>3.2.3</version.maven-surefire-plugin>
-		<version.maven-compiler-plugin>3.11.0</version.maven-compiler-plugin>
+		<version.maven-compiler-plugin>3.16.0</version.maven-compiler-plugin>
 		<version.dependency-check-maven>9.0.7</version.dependency-check-maven>
 		<version.maven-jar-plugin>3.3.0</version.maven-jar-plugin>
 		<version.maven-source-plugin>3.3.0</version.maven-source-plugin>
@@ -136,7 +136,10 @@
 				<version>${version.maven-compiler-plugin}</version>
 
 				<configuration>
+					<!-- Maven Compiler 3.13+ maps release to source/target on JDK 8. -->
 					<release>${version.java}</release>
+					<source>${version.java}</source>
+					<target>${version.java}</target>
 				</configuration>
 			</plugin>
 			<plugin>
