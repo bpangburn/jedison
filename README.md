@@ -50,43 +50,36 @@ http://www.greatmindsworking.com
 This release of jEDISON allow for segmentation based on either the 04-25-2002
 or the 04-14-2003 release of the C++ EDISON code.
 
-## COMPILATION
+## BUILDING AND RUNNING
 
-For current Maven/IDE setup, see [IDE_SETUP.md](IDE_SETUP.md). For the
-legacy publishing configuration and follow-up testing, see [TODO.md](TODO.md).
+The project already uses Maven; see [BUILDING.md](BUILDING.md) for commands,
+CI/test coverage, Java compatibility, and security checks, or
+[IDE_SETUP.md](IDE_SETUP.md) for IDE imports.
 
+```sh
+git clone https://github.com/bpangburn/jedison.git
+cd jedison
+mvn -B -ntp clean verify
+java -jar target/jedison-1.1.0.jar sample 0 true 6.5 7 20 0
+```
 
-jEDISON has been tested with Java 1.8 or later.
+The sample command writes `segment.png` to the current working directory.
+The JAR manifest invokes `com.greatmindsworking.jedison.SegTest`.
+The seven required arguments are: input path (or `sample`), EDISON port
+version (`0` or `1`), display flag, color radius, spatial radius,
+minimum region size, and speedup mode (`0`, `1` or `2`).
+Mode `2` additionally requires a speed factor. See [TODO.md](TODO.md) for
+a known legacy high-speed CLI argument parsing issue.
 
-Git/Maven:
-  `git clone https://github.com/bpangburn/jedison.git`
+## MAVEN DEPENDENCY
 
-  After cloning, you can use an IDE, e.g. Eclipse or NetBeans, to compile/run.
-  Or you can use mvn directly and then run as shown here. Note that compiled
-  jar files will be in the ./target subdirectory.
-  
-  jEDISON Library:
-    `cd ./jedison/`
-    `mvn -B -ntp clean verify`
-
-## DEPENDENCY INTEGRATION
-
-  Add jEDISON to the Maven dependencies in your POM file:  
-
-    <dependency>
-        <groupId>com.greatmindsworking.jedison</groupId>
-        <artifactId>jedison</artifactId>
-        <version>x.y.z</version>
-    </dependency>
-
-## SAMPLE/DEMO PROGRAMS
-
-  1. Navigate to the folder containing the jEDISON jar
-  2. Type: `java -jar jedison-x.y.z.jar {comma-separated paramters}`
-  
-  Usage: java -jar jedison-x.y.z.jar <source image ('sample' for demo)> <version: 0=04-25-2002, 1=04-14-2003> <display: true/false> <color radius> <spatial radius> <min region> <speedup: 0=none, 1=medium, 2=high> <for speedup of 2, speed factor: 0.0=better quality, 1.0=better speed>
-  
-  To quickly run jEDISON on a sample image packaged in the jar, type: `java -jar jedison-x.y.z.jar sample 0 true 6.5 7 20 0`
+```xml
+<dependency>
+    <groupId>com.greatmindsworking.jedison</groupId>
+    <artifactId>jedison</artifactId>
+    <version>1.1.0</version>
+</dependency>
+```
 
 ## ADDITIONAL INFORMATION
 
