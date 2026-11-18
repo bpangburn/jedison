@@ -33,8 +33,9 @@ establish pixel-for-pixel segmentation equivalence with the original C++
 EDISON algorithm; see [TODO.md](TODO.md) for desired image regression coverage.
 
 To import into Eclipse, NetBeans or IntelliJ, see [IDE_SETUP.md](IDE_SETUP.md).
-To publish rather than build, see the publishing notes and TODO: do not use
-`-Prelease` or `mvn deploy` for routine verification.
+To publish rather than build, use the [Central Portal publishing guide](PUBLISHING.md).
+The release profile is upload-disabled by default; do not use `-Prelease`
+or `mvn deploy` for routine verification.
 
 ## Security checks
 
