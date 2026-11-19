@@ -1,7 +1,7 @@
 # Maintenance TODO — jEDISON
 
 ## Build and runtime
-- [ ] Add a subprocess-based CLI integration test for both display modes, and
+- [x] Add a subprocess-based CLI integration test for both display modes, and
       high-speed mode with an eighth speed-factor parameter.
 - [x] Validate the Java 8, 11, 21 and 25 Maven CI matrix and the new JUnit tests.
 - [ ] Confirm CodeQL results are visible under GitHub's default CodeQL setup.
@@ -24,7 +24,7 @@
       partial EDISON Java port.
 
 - [x] Fix `SegTest` command-line display flag and eighth high-speed parameter (PR #9).
-- [ ] Add subprocess-based CLI regression tests for these arguments.
+- [x] Add subprocess-based CLI regression tests for these arguments.
 
 ## EBLA downstream integration
 - [ ] After a verified jEDISON build, test the published
