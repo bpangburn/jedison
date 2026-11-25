@@ -1,0 +1,30 @@
+==============================================================================
+POM ChangeLog file for the jEDISON project
+
+NOTE: Tracking POM updates in a separate file starting with 1.1.1.
+==============================================================================
+
+==============================================================================
+jEDISON 1.1.1 - TBD
+==============================================================================
+
+- Maven minimum remains 3.6.3; Java release remains 8.
+- Retain Java 8-compatible compiler configuration and JUnit 5 tests.
+- Replace OSSRH staging with Sonatype Central Portal publishing.
+- Changes relative to the pre-snapshot POM:
+- junit-jupiter: new -> 5.14.4
+- maven-enforcer-plugin: 3.4.1 -> 3.7.0
+- maven-clean-plugin: 3.3.2 -> 3.5.0
+- maven-deploy-plugin: 3.1.1 -> 3.2.0
+- maven-install-plugin: 3.1.1 -> 3.2.0
+- maven-resources-plugin: 3.3.1 -> 3.5.0
+- maven-site-plugin: 4.0.0-M12 -> 4.0.0-M16
+- maven-surefire-plugin: 3.2.3 -> 3.6.1
+- maven-compiler-plugin: 3.11.0 -> 3.16.0
+- dependency-check-maven: 9.0.6 -> 13.0.0
+- maven-jar-plugin: 3.3.0 -> 3.5.1
+- maven-source-plugin: 3.3.0 -> 3.4.0
+- maven-javadoc-plugin: 3.6.3 -> 3.12.0
+- maven-gpg-plugin: 3.1.0 -> 3.2.8
+- central-publishing-maven-plugin: new -> 0.12.0
+- Removed nexus-staging-maven-plugin (1.6.13).
