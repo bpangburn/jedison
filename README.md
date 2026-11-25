@@ -60,7 +60,7 @@ CI/test coverage, Java compatibility, and security checks, or
 git clone https://github.com/bpangburn/jedison.git
 cd jedison
 mvn -B -ntp clean verify
-java -jar target/jedison-1.1.0.jar sample 0 true 6.5 7 20 0
+java -jar target/jedison-1.1.1-SNAPSHOT.jar sample 0 true 6.5 7 20 0
 ```
 
 The sample command writes `segment.png` to the current working directory.

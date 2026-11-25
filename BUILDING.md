@@ -16,10 +16,10 @@ cd jedison
 mvn -B -ntp clean verify
 ```
 
-The executable sample is in `target/jedison-1.1.0.jar`. Run:
+The executable sample is in `target/jedison-1.1.1-SNAPSHOT.jar`. Run:
 
 ```sh
-java -jar target/jedison-1.1.0.jar sample 0 true 6.5 7 20 0
+java -jar target/jedison-1.1.1-SNAPSHOT.jar sample 0 true 6.5 7 20 0
 ```
 
 This writes `segment.png` in the **current working directory**; the sample
