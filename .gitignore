@@ -23,12 +23,11 @@
 hs_err_pid*
 /target/
 
-# IDE generated metadata; retained Java 8 JDT compiler preferences are tracked
+# IDE generated metadata
 bin/
 .classpath
 .project
-.settings/org.eclipse.core.resources.prefs
-.settings/org.eclipse.m2e.core.prefs
+.settings/
 
 # Other IDEs and common local output
 .idea/
